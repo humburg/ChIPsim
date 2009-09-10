@@ -1,0 +1,11 @@
+importClassesFrom(Biostrings, DNAString, DNAStringSet) 
+importClassesFrom(ShortRead, ShortReadQ) 
+importFrom(IRanges, subseq, width) 
+importFrom(Biostrings, DNAStringSet, quality, read.DNAStringSet) 
+importFrom(ShortRead, countLines, readFastq) 
+importFrom(graphics, hist) 
+importFrom(methods, is) 
+importFrom(stats, convolve, dbeta, dgamma, dnbinom, dnorm, fft, nextn, pnbinom, runif)
+importFrom(utils, relist)
+
+exportPattern("^[[:alpha:]]+")
