@@ -21,7 +21,7 @@ two component lists that provide forward and reverse strand positions.
 List of the same shape as \code{readPos} providing read names.
 }
   \item{sequence}{
-Genome reference sequence (a \code{\link[Biostrings]{DNAStringSet}}).
+Genome reference sequence (a \code{\link[Biostrings:XStringSet-class]{DNAStringSet}}).
 }
   \item{quality}{
 Read quality scores (see Details).
@@ -35,9 +35,10 @@ Further arguments to \code{\link{pos2fastq}}.
 }
 \details{
 If \code{quality} looks like it might refer to a fastq file an attempt is made to create a 
-\code{\link[ShortRead]{ShortReadQ}} object. The read qualities of any \code{\link[ShortRead]{ShortReadQ}}
-object passed as \code{quality} (directly or indirectly as file name) are extracted and passed 
-on to \code{\link{pos2fastq}} as \code{quality} argument. Otherwise it is passed on unchanged. 
+\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object. The read qualities of any 
+\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object passed as \code{quality} 
+(directly or indirectly as file name) are extracted and passed on to \code{\link{pos2fastq}} 
+as \code{quality} argument. Otherwise it is passed on unchanged. 
 }
 \value{
 The name of the output file.

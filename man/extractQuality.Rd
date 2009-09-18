@@ -15,7 +15,7 @@ extractQuality(reads, minLength = 25, dir,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{reads}{
-Either the name of a fastq file or a \code{\link[ShortRead]{ShortReadQ}} object (see Details).
+Either the name of a fastq file or a \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object (see Details).
 }
   \item{minLength}{
 Minimum read length required.

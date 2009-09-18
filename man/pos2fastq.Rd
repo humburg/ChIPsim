@@ -26,7 +26,7 @@ List of names to use for reads in fastq file. Has to be of same shape as \code{n
 Passed on as argument to \code{qualityFun}.
 }
   \item{sequence}{
-Reference sequence (a \code{\link[Biostrings]{DNAString}} object). 
+Reference sequence (a \code{\link[Biostrings:DNAString-class]{DNAString}} object). 
 }
   \item{qualityFun}{
 Function to generate quality scores.

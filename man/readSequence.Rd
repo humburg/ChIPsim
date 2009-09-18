@@ -18,7 +18,7 @@ readSequence(readPos, sequence, strand, readLen = 36)
 Numeric value indicating the start position on the chromosome.
 }
   \item{sequence}{
-Chromosome sequence (a \code{\link[Biostrings]{DNAString}})
+Chromosome sequence (a \code{\link[Biostrings:DNAString-class]{DNAString}})
 }
   \item{strand}{
 Strand indicator (+1 / -1)
