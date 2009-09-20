@@ -77,9 +77,9 @@ The components of the returned list are:
 The default for this the name of the fastq file containing the read sequences;}
 \item{readNames}{Either a list of read names or the name of a file containing that list.}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+%\references{
+%%% ~put references to the literature/web site here ~
+%}
 \author{
 Peter Humburg
 }

@@ -89,9 +89,9 @@ makeFeatures(generator = defaultGenerator(),
 	Each feature is represented by a list of parameters and has a class with the same name as the
 	state that generated the feature. In addition all features are of class \code{SimulatedFeature}.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+%\references{
+%%% ~put references to the literature/web site here ~
+%}
 \author{
 	Peter Humburg
 }

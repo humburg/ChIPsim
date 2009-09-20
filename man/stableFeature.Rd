@@ -78,9 +78,9 @@ Further arguments (currently ignored).
 \value{
 A list of parameters for the corresponding feature type. These parameters are later used to compute nucleosome densities. 
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+%\references{
+%%% ~put references to the literature/web site here ~
+%}
 \author{
 Peter Humburg
 }

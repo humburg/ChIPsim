@@ -29,7 +29,7 @@ Character string indicating the format the qualities are encoded in (see Details
 }
 \details{
 If \code{reads} and \code{dir} are character strings it is assumed that \file{dir/reads} is the name 
-of a fastq file. Otherwise \code{reads} should be a \code{\link[ShortRead]{ShortReadQ}} object in which
+of a fastq file. Otherwise \code{reads} should be a \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object in which
 case \code{dir} is ignored.
 
 Currently three different encodings of read qualities are supported. The encoding has to be selected via the 
