@@ -15,8 +15,8 @@ for other experiments can be implemented using the provided framework.
 \tabular{ll}{
 Package: \tab ChIPsim\cr
 Type: \tab Package\cr
-Version: \tab 0.99.2\cr
-Date: \tab 2009-09-20\cr
+Version: \tab 1.1.1\cr
+Date: \tab 2009-11-03\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 Depends: \tab Biostrings\cr

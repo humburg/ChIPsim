@@ -274,6 +274,7 @@ fuzzyFeature <- function(start, length=seq(1000, 1e4, by=1000), meanDist=175:400
 ## given a list of features, ensure parameters of neighbouring features are compatible and determine required
 ## overlap between features
 reconcileFeatures.NucleosomePosition <- function(features, defaultMeanDist=200, ...){
+	exClass <- class(features)
 	lastMeanDist <- sapply(features, function(x) if(!is.null(x$meanDist)) x$meanDist else NA)
 	lastMeanDist <- lastMeanDist[!is.na(lastMeanDist)]
 	if(length(lastMeanDist) == 0) lastMeanDist <- defaultMeanDist
@@ -418,7 +419,7 @@ reconcileFeatures.NucleosomePosition <- function(features, defaultMeanDist=200, 
 		}
 		
 	}
-		
+	class(features) <- c(exClass[-length(exClass)], "ReconciledSimulatedExperiment", "SimulatedExperiment")	
 	features
 }
 
@@ -1210,4 +1211,39 @@ sampleFromFile <- function(file, n, nrec, recLen=4, skip=0, output){
 	
 	close(file)
 	close(output)
+}
+
+#################### SECTION: print methods ############################
+print.SimulatedExperiment <- function(x, ...){
+	classes <- sort(unique(sapply(x, function(y) class(y)[1])))
+	cat("Object of class ", class(x)[1], if(inherits(x, "ReconciledSimulatedExperiment")) " (reconciled)", 
+			" with ", length(x), " feature", sep="")
+	if(length(classes) > 1) cat("s")
+	cat(".\nFeature class")
+	if(length(classes) > 1) cat("es")
+	cat(": ",classes,"\n")
+	invisible(x)
+}
+
+print.SimulatedFeature <- function(x, ...){
+	cat("Object of class", class(x)[1], if(inherits(x, "ReconciledFeature")) "(reconciled)", "\n")
+	for(i in 1:length(x)){
+		cat(names(x)[i], ": ", sep="")
+		if(!is(x[[i]], "function")) cat(x[[i]], "\n")
+		else str(x[[i]])
+	}
+	invisible(x)
+}
+
+
+#################### SECTION: summary methods ############################
+summary.SimulatedExperiment <- function(object, ...){
+	classes <- sapply(object, function(x) class(x)[1])
+	cat("Object of class ", class(object)[1], if(inherits(object, "ReconciledSimulatedExperiment")) " (reconciled)", 
+			" with ", length(object), " feature", sep="")
+	if(length(classes) > 1) cat("s")
+	cat("\n")
+	x <-table(classes)
+	for(i in 1:length(x)) cat(names(x)[i], ": ", x[[i]], "\n", sep="")
+	invisible(x)
 }
