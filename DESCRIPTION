@@ -4,7 +4,7 @@ Title: Simulation of ChIP-seq experiments
 Version: 1.1.1
 Date: 2009-11-03
 Author: Peter Humburg
-Maintainer: Peter Humburg <Peter.Humburg@gmail.com>
+Maintainer: Peter Humburg <Peter.Humburg@well.ox.ac.uk>
 Description: A general framework for the simulation of ChIP-seq data. Although currently focused on nucleosome positioning the package is designed to support different types of experiments.  
 License: GPL (>= 2)
 LazyLoad: yes

@@ -30,7 +30,7 @@ have to be replaced. See the vignettes for more detail.
 \author{
 Peter Humburg
 
-Maintainer: Peter Humburg <Peter.Humburg@csiro.au>
+Maintainer: Peter Humburg <Peter.Humburg@well.ox.ac.uk>
 }
 \references{
 ~~ Literature or other references for background information ~~
