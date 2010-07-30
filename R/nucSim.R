@@ -135,7 +135,7 @@ makeFeatures <- function(generator=defaultGenerator(), transition=defaultTransit
 		
 		helpText <- ""
 		if(!truncate)
-			helpText <- paste(" This could be because the intial feature was longer than the maximum length (", 
+			helpText <- paste(" This could be because the initial feature was longer than the maximum length (", 
 					length - start, "). Consider using 'truncate=TRUE' or adjust your model parameters to ensure",
 					" that at least one feature is generated.", sep="")
 		else helpText <- " Check your model parameters."
@@ -147,7 +147,7 @@ makeFeatures <- function(generator=defaultGenerator(), transition=defaultTransit
 		previous <- features[[length(features) - 1]]
 		curLength <- curLength - previous$length
 		## remove (invalid) last feature and restart MC in what is now the last state
-		features <- features[-length(features)]
+		features <- features[-c(length(features)-1, length(features))]
 		features <- c(features, Recall(generator, transition, previous, curLength + 1, 
 						length, control, globals, lastFeat, truncate, 1, TRUE))
 		tries <- tries + 1		
@@ -597,7 +597,7 @@ bindLocDens <- function(x, fragLength){
 ## stable: function giving the density for a stable nucleosome centred at 0
 ## dist: function giving the distribution of distances between nucleosomes (centre to centre)
 ## minDist: minimum distance between nucleosomes
-## TODO: handle additional aguments to stable and dist more gracefully
+## TODO: handle additional arguments to stable and dist more gracefully
 phaseNuc <- function(stable, dist, minDist=175, length=2000, meanDist=200, 
 		varDist=(meanDist-minDist)+(meanDist-minDist)^2/2, shift=10, ratio=1, weight=1, stability=1){
 	if(is.null(meanDist)) meanDist <- 200 ## for featureDensity.StableFeature
@@ -713,6 +713,8 @@ sampleReads <- function(readDens, nreads=6e6, strandProb=c(0.5, 0.5)){
 	readPos <- list(fwd=numeric(), rev=numeric())
 		
 	strand <- table(sample(names(strandProb), nreads, prob=strandProb, replace=TRUE))
+	if(is.na(strand["fwd"])) strand["fwd"] <- 0
+	if(is.na(strand["rev"])) strand["rev"] <- 0
 	readPos$fwd <- sample(nrow(readDens), strand["fwd"], prob=readDens[, "fwd"], replace=TRUE)
 	readPos$rev <- sample(nrow(readDens), strand["rev"], prob=readDens[, "rev"], replace=TRUE)
 	
@@ -1164,7 +1166,8 @@ defaultFunctions <- function(){
 			readSequence=writeReads, readNames=simpleNames)
 }
 
-defaultControl <- function(features=list(), bindDensity=list(), readDensity=list(), readNames=list(), readSequence=list()){
+defaultControl <- function(features=list(), bindDensity=list(), readDensity=list(), 
+		readNames=list(), readSequence=list()){
 	fragment <- readDensity$fragment
 	meanLength <- readDensity$meanLength
 	readDensity <- readDensity[-which(names(readDensity) %in% c("fragment", "meanLength"))]
