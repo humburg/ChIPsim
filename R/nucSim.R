@@ -703,6 +703,8 @@ bindDens2readDens <- function(bindDens, fragment, nfrag=1e5, bind=147, minLength
 			convolve(bindDens, rev(readKernel), type="open")[idx[[2]]])
 	readDens <- apply(readDens, 2, function(x) ifelse(x < 0, 0, x))
 	
+	## TODO: ensure reads are not generated closer to the end of the chromosome than the insert size allows
+	
 	readDens
 }
 
@@ -1170,14 +1172,14 @@ defaultControl <- function(features=list(), bindDensity=list(), readDensity=list
 		readNames=list(), readSequence=list()){
 	fragment <- readDensity$fragment
 	meanLength <- readDensity$meanLength
-	readDensity <- readDensity[-which(names(readDensity) %in% c("fragment", "meanLength"))]
+	readDensity <- readDensity[!(names(readDensity) %in% c("fragment", "meanLength"))]
 	readDensity <- c(list(fragment=if(is.null(fragment)) fragDens else fragment, 
 					meanLength=if(is.null(meanLength)) 160 else meanLength), readDensity)
 	
 	qualityFun <- readSequence$qualityFun
 	errorFun <- readSequence$errorFun
 	readLen <- readSequence$readLen
-	readSequence <- readSequence[-which(names(readSequence) %in% c("qualityFun", "errorFun", "readLen"))]
+	readSequence <- readSequence[!(names(readSequence) %in% c("qualityFun", "errorFun", "readLen"))]
 	readSequence <- c(list(qualityFun=if(is.null(qualityFun))readQualitySample else qualityFun, 
 					errorFun=if(is.null(errorFun))readError else errorFun, 
 					readLen=if(is.null(readLen)) 36 else readLen), readSequence)
