@@ -733,7 +733,7 @@ extractQuality <- function(reads, minLength=25, dir, type=c("Illumina", "Sanger"
 	offset <- c(64, 33, 59)
 	names(offset) <- c("Illumina", "Sanger", "Solexa")
 		
-	quality <- ShortRead::quality(reads)
+	quality <- quality(reads)
 	length <- numeric(length(quality))
 	for(i in 1:length(quality)){
 		length[i] <- length(quality[[i]])
@@ -910,7 +910,7 @@ pos2fastq <- function(readPos, names, quality, sequence, qualityFun, errorFun, r
 writeReads <- function(readPos, readNames, sequence, quality, file, ...){
 	if(is(quality, "connection") || (is.character(quality) && file.exists(quality))) 
 		quality <- ShortRead::readFastq(quality)
-	if(is(quality, "ShortReadQ")) quality <- ShortRead::quality(ShortRead::quality(quality))
+	if(is(quality, "ShortReadQ")) quality <- quality(quality(quality))
 	
 	fileName <- file
 	file <- file(file, open="w", blocking=FALSE)
