@@ -1,7 +1,7 @@
 Package: ChIPsim
 Type: Package
 Title: Simulation of ChIP-seq experiments
-Version: 1.7.2
+Version: 1.8.0
 Date: 2011-05-18
 Author: Peter Humburg
 Maintainer: Peter Humburg <Peter.Humburg@well.ox.ac.uk>
