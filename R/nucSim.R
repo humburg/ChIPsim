@@ -799,7 +799,7 @@ encodeQuality <- function(quality, type=c("Illumina", "Sanger", "Solexa")){
 readQualitySample <- function(read, qualities, checkLength=TRUE, ...){
 	if(checkLength) idx <- sample(which(IRanges::width(qualities) >= length(read)), 1)
 	else idx <- sample(length(qualities), 1)
-	IRanges::subseq(qualities[[idx]], 1, length(read))
+	XVector::subseq(qualities[[idx]], 1, length(read))
 }
 
 ## probability of sequencing error producing a certain nucleotide given the correct nucleotide 
@@ -833,7 +833,7 @@ readError <- function(read, qual, alphabet=c("A", "C", "G", "T"), prob=defaultEr
 readSequence <- function(readPos, sequence, strand, readLen=36){
 	## get true read sequence
 	if(strand == -1) readPos <- readPos - readLen + 1
-	seq <- IRanges::subseq(sequence, readPos, width=readLen)
+	seq <- XVector::subseq(sequence, readPos, width=readLen)
 	if(strand == -1) seq <- Biostrings::reverseComplement(seq)
 	
 	seq	

@@ -1,7 +1,7 @@
 Package: ChIPsim
 Type: Package
 Title: Simulation of ChIP-seq experiments
-Version: 1.15.0
+Version: 1.15.1
 Date: 2011-05-18
 Author: Peter Humburg
 Maintainer: Peter Humburg <Peter.Humburg@well.ox.ac.uk>
@@ -9,7 +9,7 @@ Description: A general framework for the simulation of ChIP-seq data. Although c
 License: GPL (>= 2)
 LazyLoad: yes
 Depends: Biostrings
-Imports: IRanges, Biostrings, ShortRead, graphics, methods, stats, utils
+Imports: IRanges, XVector, Biostrings, ShortRead, graphics, methods, stats, utils
 Suggests: actuar, zoo
 biocViews: Infrastructure, Bioinformatics, ChIPseq
 
