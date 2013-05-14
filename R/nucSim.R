@@ -990,7 +990,7 @@ simChIP <- function(nreads, genome, file, functions=defaultFunctions(),
 	if(missing(genome)) stop("Argument \"genome\" is missing, with no default. Please provide a reference sequence.")
 	if(is(genome, "DNAString")) genome <-  DNAStringSet(genome)
 	if(!is(genome, "DNAStringSet")) 
-		genome <-  read.DNAStringSet(genome, format="fasta")
+		genome <-  readDNAStringSet(genome, format="fasta")
 	
 	## ensure we know how many reads to generate
 	if(missing(nreads)) stop("Argument \"nreads\" is missing, with no default. Please provide the number of ",
